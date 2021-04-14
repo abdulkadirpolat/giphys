@@ -1,6 +1,7 @@
 <template>
   <div class="gifList">
-    <gif v-for="gif in gifs" :key="gif.id" :gif="gif" />
+    <!-- <gif v-for="gif in gifs" :key="gif.id" :gif="gif" /> -->
+    <Gif v-for="gif in gifs" :key="gif.id" :gif="gif" ></Gif>
   </div>
 </template>
 <script>
@@ -15,7 +16,7 @@ export default {
 .gifList {
   @apply flex flex-wrap justify-evenly mt-3 mb-12;
 }
-.container .image {
+/* .container .image {
   @apply m-1;
-}
+} */
 </style>

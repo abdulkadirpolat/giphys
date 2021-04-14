@@ -11,8 +11,10 @@
     </transition>
   </div> -->
   <div class="mx-auto max-w-8xl">
-    <search @fetch-gifts='onFetch' />
-    <gif-list :gifs="gifs" />
+    <!-- <search @fetch-gifts='onFetch' />
+    <gif-list :gifs="gifs" /> -->
+    <Search  @fetch-gifts='onFetch'></Search>
+    <GifList :gifs="gifs"></GifList>
   </div>
 </template>
 
@@ -20,6 +22,7 @@
 // import Axios from "axios";
 
 export default {
+  name:'index',
   data() {
     return {
       gifs: []

@@ -2,12 +2,12 @@
   <!-- <div class="image">
     <img :src="gif.images.fixed_height.url" />
   </div> -->
-  <div>
-    <div
-      class="image"
-      :style="`background-image:url(${gif.images.fixed_width_still.url})`"
-    ></div>
-  </div>
+<!-- <div>{{gif}}</div> -->
+  <!-- <div
+    class="image"
+    :style="`background-image:url(${gif.images.original.url})`"
+  ></div> -->
+  <img class="image" :src="`${gif.images.original.url}`" alt="">
 </template>
 
 <script>
@@ -22,8 +22,8 @@ export default {
 };
 </script>
 
-<style>
-.image {
+<style scoped lang="postcss">
+/* .image {
   width: auto;
   height: 100%;
   transition: 300ms all;
@@ -36,5 +36,8 @@ export default {
 
 .image:hover {
   transform: scale(1.3);
+} */
+.image{
+  @apply w-60 h-60 bg-no-repeat bg-cover bg-center
 }
 </style>

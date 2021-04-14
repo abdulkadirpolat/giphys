@@ -14,33 +14,47 @@
 
 <script>
 export default {
-  name:'Search',
-  data(){
-    return{
-      keyword="",
-      timeout=null,
-    }
+  name: "Search",
+  data() {
+    return {
+      keyword: "",
+      timeout: null
+    };
   },
+  // publicRuntimeConfig:{
+  //   axios:{
+  //     baseUrl: `https://api.giphy.com/v1/gifs/search?api_key=j2VzG5q20cDSUMeZ4sDBxcEyoXyATC2v&q=${this.keyword}&limit=9`
+  //   }
+  // },
+  // modules:['@nuxtjs/axios']
+
   methods: {
-    onInput(){
-clearTimeout(this.timeout);
- this.timeout= setTimeout(()=>{
-   this.search()
-
- })
-
-    },
-    search(){
-       fetch(`https://api.giphy.com/v1/gifs/search?api_key=j2VzG5q20cDSUMeZ4sDBxcEyoXyATC2v
-&q=${this.keyword}`)
-.then(response => response.json())
-.then(result => {
-  console.log(result);
-  this.gifs = result.data;
-  this.$$emit('fetch-gifs',result.data)
-})
+    onInput() {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.search();
+      });
     }
+    // search() {
+    //   fetch(`https://api.giphy.com/v1/gifs/search?api_key=j2VzG5q20cDSUMeZ4sDBxcEyoXyATC2v&q=${this.keyword}&limit=9`)
+    //     .then(response => response.json())
+    //     .then(result => {
+    //       console.log(result);
+    //       this.gifs = result.data;
+    //       this.$emit("fetch-gifs", result.data);
+    //     });
+    // }
+  },
+
+  async asyncData({ $content, params }) {
+  const article = await $content ('articles',params.slug).fetch()
+
+  const [previ,next] = await $content('articles')
+  .only
+
+
   }
+
   // data() {
   //   return {
   //     searchQuery: ""
